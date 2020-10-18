@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>URL Shortner</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css" />
+    <link rel="stylesheet" href="/index.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
+</head>
+
+<body>
+    <main id="app">
+        <section class="columns is-centered mt-6">
+            <div class="column is-half m-3">
+                <h1 class="is-size-1 has-text-centered has-text-primary">URL Shortener</h1>
+                <form class="mt-5" v-if="showForm" @submit.prevent="createURL()">
+                    <div class="field">
+                        <p class="control has-icons-left">
+                            <input v-model="url" class="input is-medium" placeholder="URL to shorten" type="text" id="url" name="url" />
+                            <span class="icon is-small is-left">
+                  <i class="fas fa-link"></i>
+                </span>
+                        </p>
+                        <p class="help is-danger">{{validationErrors.url}}</p>
+                    </div>
+
+                    <div class="field">
+                        <div class="control">
+                            <input v-model="slug" class="input is-medium" placeholder="Slug of your choice" type="text" id="slug" name="slug" />
+                        </div>
+                    </div>
+                    <div class="has-text-centered">
+                        <button type="submit" class="button is-primary is-medium">Create</button>
+                    </div>
+                    <div v-bind:class="[success ? 'has-text-success' : 'has-text-danger','has-text-centered','mt-3']">{{ message }}</div>
+                    <br>
+
+                    <div v-if="shortenedUrl" title="Copy shortened URL" class="control has-icons-left has-icons-right">
+                        <input v-on:click="copyURL" id="shortenedUrl" readonly class="input is-success" type="text" placeholder="Text input" v-model="shortenedUrl">
+                        <span class="icon is-small is-left has-text-success">
+                <i class="fas fa-check"></i>
+              </span>
+                        <span class="icon is-small is-right has-text-link">
+                <i v-if="!urlCopied" class="fas fa-copy"></i>
+                <i v-if="urlCopied" class="fas fa-clipboard-check"></i>
+              </span>
+                    </div>
+                    <p v-if="urlCopied" class="help is-success">Copied to Clipboard!</p>
+                </form>
+            </div>
+        </section>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="/app.js"></script>
+
+</body>
+
+</html>

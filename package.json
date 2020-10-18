@@ -1,0 +1,28 @@
+{
+  "name": "url-shortner",
+  "version": "1.0.0",
+  "description": "Yet another Url shortner to shorten up your URLs to easily memorize.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ParthModi9494/url-shortner.git"
+  },
+  "author": "Parth Modi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ParthModi9494/url-shortner/issues"
+  },
+  "homepage": "https://github.com/ParthModi9494/url-shortner#readme",
+  "dependencies": {
+    "axios": "^0.20.0",
+    "express": "^4.17.1",
+    "mongodb": "^3.6.2",
+    "nanoid": "^3.1.12"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.5"
+  }
+}
